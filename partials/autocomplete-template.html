@@ -1,0 +1,9 @@
+<div class="tags-wrapper">
+    <div class="bootstrap-tagsinput">
+        <span ng-repeat="selectedTag in selectedTags" class="tag label label-info">{{selectedTag}}<span data-role="remove" ng-click="removeTag($index)"></span></span>
+        <input type="text" placeholder="Add Owners" ng-keydown="checkKeyDown($event)" class="form-control" ng-model="searchText" ng-change="search()" ng-blur="focusOut()" />
+    </div>
+    <ul class="suggestions-list" ng-show="startSearch">
+       <li ng-repeat="suggestion in suggestions" ng-click="addToSelectedTags($index)" ng-mouseover="$parent.selectedIndex=$index" ng-class="{active : selectedIndex===$index}">{{suggestion}}</li>
+     </ul>
+</div>
