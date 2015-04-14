@@ -38,7 +38,7 @@ myAppDev.factory('alertService', function($rootScope) {
     var alertService = {};
 
     alertService.add = function(type, msg) {
-        var icons = {'success':'check'};
+        var icons = {'success':'check', 'danger':'times-circle-o'};
         $rootScope.alerts.push({'type': type, 'msg': msg, 'icon':icons[type]});
     };
 

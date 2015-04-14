@@ -17,8 +17,12 @@ angular.module('mainModule').factory('company.updateService', ['$http', '$q', '$
 		},
 		addCompany: function(data){
 			$http.post('api/company/addDetails.php', data).success(function(data){
-				alertService.add("success", "Record Added Successfully..");
+				alertService.add("success", "Record Added Successfully..");				
 				$state.go('company');
+				deferred.resolve('');
+			}).error(function(){
+				alertService.add("danger", "Record not added try again later");
+				deferred.reject('');
 			});
 		}
 	}
