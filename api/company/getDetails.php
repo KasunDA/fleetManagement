@@ -1,13 +1,8 @@
 <?php
 
+include '../configFunction.php';
 // Create connection
-$con=mysqli_connect("localhost","root","","logistics");
-
-// Check connection
-if (mysqli_connect_errno())
-{
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+$con = connectDB();
 
 $connQuery = '';
 if($_REQUEST['id'] !== 'all'){
@@ -26,6 +21,8 @@ while($row = mysqli_fetch_array($result)) {
     $row_array['typeOfCompany'] = $row['companyType'];
     $row_array['email'] = $row['email'];
     $row_array['phone'] = $row['phone'];
+    $row_array['tanNo'] = $row['tanNo'];
+    $row_array['serviceTaxNumber'] = $row['serviceTax'];
     array_push($json_response,$row_array);
 }
 

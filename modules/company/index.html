@@ -22,6 +22,9 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr ng-if="companyList.length === 0">
+                        <td colspan="5">No Records found</td>
+                    </tr>
                     <tr ng-repeat="company in companyList track by $index">                        
                         <td>{{::($index+1)}}</td>
                         <td>{{::company.companyName}}</td>

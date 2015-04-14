@@ -1,33 +1,32 @@
 <?php
 // Create connection
-$con=mysqli_connect("localhost","root","","logistics");
+include '../configFunction.php';
 
-// Check connection
-if (mysqli_connect_errno())
-{
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
+$con     = connectDB();
 
-$data = file_get_contents("php://input");
-$objData = json_decode($data);
+$objData = getPOSTData();
 
 if($objData->id){
 	$id = $objData->id;
 }
 
-$companyName = $objData->companyName;
-$ssiNo = $objData->ssiNo;
-$panNo = $objData->panNumber;
-$address = $objData->address;
-$owners = $objData->owners;
-$typeOfCompany = $objData->typeOfCompany;
-$email = $objData->email;
-$phone = $objData->phone;
+$companyName 		= $objData->companyName;
+$ssiNo 				= $objData->ssiNo;
+$panNo 				= $objData->panNumber;
+$tanNo 				= $objData->tanNo;
+$serviceTaxNumber 	= $objData->serviceTaxNumber;
+$phone 				= $objData->phone;
+$address 			= $objData->address;
+$owners 			= $objData->owners;
+$typeOfCompany 		= $objData->typeOfCompany;
+$email 				= $objData->email;
+$phone 				= $objData->phone;
+
 
 if($id){
-	$sql = "UPDATE companylist SET companyName='$companyName',  SSINo='$ssiNo', PANNo='$panNo', address='$address', owners='$owners', companyType='$typeOfCompany', email='$email', phone='$phone' WHERE id='$id'";
+	$sql = "UPDATE companylist SET companyName='$companyName',  SSINo='$ssiNo', PANNo='$panNo', tanNo='$tanNo', serviceTax='$serviceTaxNumber', address='$address', owners='$owners', companyType='$typeOfCompany', email='$email', phone='$phone' WHERE id='$id'";
 }else{
-	$sql = "INSERT INTO companylist (companyName, SSINo, PANNo, address, owners, companyType, email, phone) VALUES ('$companyName', '$ssiNo', '$panNo', '$address', '$owners', '$typeOfCompany', '$email', '$phone')";
+	$sql = "INSERT INTO companylist (companyName, SSINo, PANNo, tanNo, serviceTax, address, owners, companyType, email, phone) VALUES ('$companyName', '$ssiNo', '$panNo', '$tanNo', '$serviceTaxNumber', '$address', '$owners', '$typeOfCompany', '$email', '$phone')";
 }
 
 

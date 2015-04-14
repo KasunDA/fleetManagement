@@ -6,6 +6,8 @@ angular.module('mainModule').controller('company.addController', ['$scope', '$st
    		 $scope.model = {
 				companyName:'',
 				ssiNo:'',
+        tanNo:'',
+        serviceTaxNumber:'',
 				panNumber:'',
 				address:'',
 				owners:'',
