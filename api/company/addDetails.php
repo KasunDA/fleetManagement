@@ -2,8 +2,6 @@
 // Create connection
 include '../configFunction.php';
 
-$con     = connectDB();
-
 $objData = getPOSTData();
 
 if($objData->id){
