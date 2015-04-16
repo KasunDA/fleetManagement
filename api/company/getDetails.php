@@ -2,7 +2,6 @@
 
 include '../configFunction.php';
 // Create connection
-$con = connectDB();
 
 $connQuery = '';
 if($_REQUEST['id'] !== 'all'){
@@ -23,7 +22,7 @@ while($row = mysqli_fetch_array($result)) {
     $row_array['phone'] = $row['phone'];
     $row_array['tanNo'] = $row['tanNo'];
     $row_array['serviceTaxNumber'] = $row['serviceTax'];
-    array_push($json_response,$row_array);
+    array_push($json_response, $row_array);
 }
 
 echo json_encode($json_response);
